@@ -11,22 +11,38 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class AppTest {
     @Test
-    public void 프로그램_시작시_타이틀_출력_그리고_종료() { // 키보드 종료에서 문자열 종료
-        Scanner sc = TestUtil.getScanner("종료");
+    public void 등록을_하면_명언과_작가를_물어본다() {
+        Scanner sc = TestUtil.getScanner("""
+                등록
+                나의 죽음을 적들에게 알리지 말라
+                이순신
+                종료
+                """);
         ByteArrayOutputStream output = TestUtil.setOutToByteArray();
         // 프로그램 시작
         new App(sc).run();
-        // 명령) 이 나오면 자동으로 종료를 입력하고 switch문을 돎
+        // 명 {) 이 나오면 자동으로 종료를 입력하고 switch문을 돎
         // 프로그램 종료
         String rs = output.toString(); // 꺼지기 전에 문자열로 바꾸어 저장
         TestUtil.clearSetOutToByteArray(output);
 
-        System.out.println(rs);
+        assertTrue(rs.contains("명언 : "));
+        assertTrue(rs.contains("작가 : "));
+    }
+
+    @Test
+    public void 프로그램_시작시_타이틀_출력_그리고_종료() {
+        Scanner sc = TestUtil.getScanner("종료");
+        ByteArrayOutputStream output = TestUtil.setOutToByteArray();
+        // 프로그램 시작
+        new App(sc).run();
+        // 명 {) 이 나오면 자동으로 종료를 입력하고 switch문을 돎
+        // 프로그램 종료
+        String rs = output.toString(); // 꺼지기 전에 문자열로 바꾸어 저장
+        TestUtil.clearSetOutToByteArray(output);
 
         assertTrue(rs.contains("== 명언 SSG =="));
         assertTrue(rs.contains("명령)"));
-
-        assertTrue(true);
     }
     @Test
     public void 테스트() {
