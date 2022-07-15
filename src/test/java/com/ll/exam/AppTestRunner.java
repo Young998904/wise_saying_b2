@@ -7,6 +7,8 @@ public class AppTestRunner {
     public static String run(String input) {
         // 원래 매번 해주던 작업을 run 으로 옮김
         Scanner sc = TestUtil.getScanner(input);
+        //평소에는 표준출력(System.out)이 모니터를 향하고 있다.
+        // 그것을 특정 바이트스트림에 쌓이도록 한다.
         ByteArrayOutputStream output = TestUtil.setOutToByteArray();
         // 프로그램 시작
         new App(sc).run();
