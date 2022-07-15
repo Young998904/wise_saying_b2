@@ -10,6 +10,7 @@ public class App {
 
     public void run() {
         System.out.println("== 명언 SSG ==");
+        int wiseSayingLastId = 0;
 
         outer :
         while (true) {
@@ -20,10 +21,13 @@ public class App {
                 case "종료" :
                     break outer;
                 case "등록" :
+                    int id = ++wiseSayingLastId;
                     System.out.print("명언 : ");
                     String content = sc.nextLine();
                     System.out.print("작가 : ");
                     String author = sc.nextLine();
+
+                    System.out.printf("%d번 명언이 등록되었습니다.\n", id);
                     break;
             }
         }
